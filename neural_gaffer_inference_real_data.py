@@ -91,11 +91,11 @@ def log_validation(validation_dataloader, vae, image_encoder, feature_extractor,
             
         
         # [-1, 1][batch_size, 3, h, w] -> [0, 1][batch_size, h, w, 3]
-        envir_map_target_hdr_npy = 0.5 * (np.array(target_envmap_hdr.permute([0, 2, 3, 1]).cpu(), dtype=np.float32) + 1.0)
-        envir_map_target_ldr_npy = 0.5 * (np.array(target_envmap_ldr.permute([0, 2, 3, 1]).cpu(), dtype=np.float32) + 1.0)
+        envir_map_target_hdr_npy = 0.5 * (np.array(target_envmap_hdr.permute([0, 2, 3, 1]).cpu().numpy(), dtype=np.float32) + 1.0)
+        envir_map_target_ldr_npy = 0.5 * (np.array(target_envmap_ldr.permute([0, 2, 3, 1]).cpu().numpy(), dtype=np.float32) + 1.0)
 
 
-        input_image_npy = 0.5 * (np.array(input_image.permute([0, 2, 3, 1]).cpu(), dtype=np.float32) + 1.0)
+        input_image_npy = 0.5 * (np.array(input_image.permute([0, 2, 3, 1]).cpu().numpy(), dtype=np.float32) + 1.0)
         input_images.append(input_image_npy)
 
 
