@@ -213,9 +213,12 @@ def main(args):
     validation_dataloader = torch.utils.data.DataLoader(
         validation_dataset,
         shuffle=False,
-        batch_size=4,
-        num_workers=1,
-        pin_memory=True,
+        batch_size=2,  # Reduced batch size to prevent memory issues
+        num_workers=0,  # Disabling multiprocessing (single-process loading)
+        pin_memory=False,  # Disable pin_memory which can cause issues
+        persistent_workers=False,
+        prefetch_factor=2,
+        timeout=600  # Increased timeout to 10 minutes
     )
 
     # Prepare everything with our `accelerator`.
